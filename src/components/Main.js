@@ -1,14 +1,14 @@
 import React from "react";
 import Button from "./Button";
-import dataCards from "../datacards";
-import dataButtons from "../databuttons";
+import dataCard from "../datacard";
+import dataButton from "../databutton";
 import CardOfProduct from "./ProductCards";
 
 function Main() {
-   let listOfCards = dataCards.map((card, idx) => {
-      return <CardOfProduct key={idx} datacards={card} />
+   let listOfCards = dataCard.map((card, idx) => {
+      return <CardOfProduct key={idx} datacard={card} />
    })
-   let listOfButtons = dataButtons.map((button, uid) => {
+   let listOfButtons = dataButton.map((button) => {
       return ( 
       <Button key={button.uid} button={button} />
       )
@@ -32,24 +32,3 @@ export default Main
 
 
 
-// function Main() {
-//    let listOfCards = dataCards.map(card => {
-//       return <CardOfProduct datacards={card} />
-//    })
-
-//    let listOfButtons = dataButtons.map(buttons => {
-//       return <Buttons databuttons={buttons} />
-//    })
-
-//    return (
-//       <div>
-//          <h1> Тату машинки</h1>
-//          <Buttons />
-//          <div className="card-wrapper">
-//             {listOfCards}
-//          </div>
-
-//       </div>
-   
-//    )
-// }

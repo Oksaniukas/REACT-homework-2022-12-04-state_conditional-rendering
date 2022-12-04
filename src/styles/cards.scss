@@ -54,6 +54,43 @@ img {
    padding: 8px 25px 12px 25px;
    margin-bottom: 30px;
    cursor: pointer;
+   position: relative;
+}
+
+.triangle-right1 {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   right: -30px;
+   border: 10px solid transparent;
+   border-left: 19px solid #BB8C5F;
+}
+
+.triangle-right2 {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   right: -27px;
+   border: 10px solid transparent;
+   border-left: 20px solid #EEEEEE;
+}
+
+.triangle-left1{
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   left: -30px;
+   border: 10px solid transparent;
+   border-right: 19px solid #BB8C5F;
+}
+
+.triangle-left2{
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   left: -27px;
+   border: 10px solid transparent;
+   border-right: 20px solid #EEEEEE;
 }
 
 .favourite {

@@ -1,4 +1,4 @@
-let dataCards = [
+let datacard = [
    {
       img: './assets/images/image1.png',
       title: 'Foxxx Kitsune Mini Black Vintage RCA',
@@ -63,7 +63,7 @@ let dataCards = [
       img: './assets/images/image11.png',
       title: 'Cyborg Machines Alter Rotary Axis Cross Sexy Nymph',
       price: '11 000',
-      isLiked: false,
+      isLiked: false, 
    },
    {
       img: './assets/images/image12.png',
@@ -73,4 +73,4 @@ let dataCards = [
    }
 ]
 
-export default dataCards
+export default datacard

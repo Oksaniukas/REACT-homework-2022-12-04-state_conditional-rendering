@@ -1,60 +1,56 @@
 import React, { useState } from "react";
+import AddInCart from "./Incart";
+import CountBlock from "./CountBlock";
 
 function CardOfProduct(props) {
-   // let abc = () => {
-   //    console.log('you have click')
-   // onClick={abc}
+   let [heart, setHeart] = useState(props.datacard.isLiked)
+   let [showCart, setShowCart] = useState(true)
 
-   /***BUTTON-IN-CART********************************************* */
-   let [number, setNumber] = useState(5)
-   let changeNumber = () => {
-      // setNumber(number+10)
-      setNumber(prev => prev+5)
+   function changeCartState() {
+      setShowCart(prevCart => !prevCart)
+      changeNumberPlus()
    }
-
-   //***HEARTS ********************************************************/
-   let [heart, setHeart] = useState(props.datacards.isLiked)
    
-   // let heartClass = heart ? 'favourite red' : 'favourite'
-   let heartClass = heart ? ' ./assets/images/like.svg' : './assets/images/like2.svg'
+   let heartClass = heart ? './assets/images/like2.svg' : ' ./assets/images/like.svg' 
 
    let changeFavourite = () => {
       setHeart(prev => !prev)
    }
 
-/*COUNT-PLUS-MINUS ************************************************************ */
-let [number1, setNumber1] = useState(0)
+   let [number, setNumber] = useState(0);
+
    let changeNumberPlus = () => {
-      setNumber1(prev => prev+1)
+      setNumber(prev => prev+1)
    }
+
    let changeNumberMinus = () => {
-      setNumber1(prev => prev-1)
+      setNumber(prev => {
+         if (prev === 1) {
+            setNumber(0)
+            changeCartState()
+         }
+         else {
+            return prev-1
+         }
+      } )
    }
-/*************************** */
-   return(
+   
+   return (
       <div className="card">
-         {number}
          {heart}
-         <img src={props.datacards.img} alt='cardimage' />
+         <h2> {heart ? "I LIKE IT" : "DO YOU LIKE IT?"} </h2>
+         <img src={props.datacard.img} alt='cardimage' />
          <div className="text-block">
-            <h3>{props.datacards.title}</h3>
-            <div className="text-price">{props.datacards.price} €</div>
-            <div className="button-in-cart" onClick={changeNumber}>  
-               Добавить в корзину
-            </div>
+            <h3>{props.datacard.title}</h3>
+            <div className="text-price">{props.datacard.price} €</div>
+            {showCart && <AddInCart handleClick={changeCartState} />}
+                       
          </div>
          <div className='favourite' >
             <img className="favourite-icon" src={heartClass} alt="like" 
             onClick={changeFavourite}/>
          </div>
-         <div className="count-block">
-            <div className="count-button minus" onClick={changeNumberMinus}>-</div>
-            <div className="count-block-text-block">
-               <div className="count-block-text1">{number1}</div>
-               <p className="count-block-text2">В корзине</p>
-            </div>
-            <div className="count-button plus" onClick={changeNumberPlus}>+</div>
-         </div>
+         {!showCart && <CountBlock minus={changeNumberMinus} plus={changeNumberPlus} number={number} />}         
       </div>
    )
 }
